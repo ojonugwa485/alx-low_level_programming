@@ -5,9 +5,7 @@
 # Larry Madeo (@hillmonkey)
 
 BIN_PATH="/usr/local/bin"
-
 BETTY_STYLE="betty-style"
-
 BETTY_DOC="betty-doc"
 
 if [ "$#" = "0" ]; then
