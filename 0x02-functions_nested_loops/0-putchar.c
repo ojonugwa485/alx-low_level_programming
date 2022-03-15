@@ -1,17 +1,23 @@
-#include "main.h"
+#include <main.h>
 
 /**
- *print_alphabet - abcd
- *Description: print lowercase alphabet
- *Return: void.
+ * main - prints _putchar
+ *
+ * Description: prints _putchar
+ *
+ * Return: 0 (Success)
  */
-void print_alphabet(void)
+
+int main(void)
 {
-char alphabet[26] = "abcdefghijklmnopqrstuvwxyz";
-int i;
-for (i = 0; i < 26; i++)
-{
-_putchar(alphabet[i]);
-}
-_putchar('\n');
+	char text[9] = "_putchar";
+	int i = 0;
+
+	for (i = 0; i < 8; i++)
+	{
+		_putchar(text[i]);
+	}
+	_putchar('\n');
+
+	return (0);
 }
