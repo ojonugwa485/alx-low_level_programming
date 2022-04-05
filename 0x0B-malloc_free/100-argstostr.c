@@ -1,48 +1,85 @@
-#include <stdlib.h>
+#include "main.h"
+
+char *_strcat(char *dest, char *src);
 
 /**
- * argstostr - a function that concatenates
- *             all the arguments
- *
- * @ac: argument counter
- * @av: argument holder
+ * argstostr - concatenates all the arguments
+ * @av: the content
+ * @ac: the size of the content
  *
  * Return: a pointer to a new string
- *         or NULL if it fails
  */
-
 char *argstostr(int ac, char **av)
 {
-	int i, j, k, leng;
-	char *str;
+	char *new, *salt;
+	int i, j, k;
 
-if (ac == 0 || av == NULL)
-	return (NULL);
-
-	/*find length of vector + '\0' which makes it a 2d array*/
-	leng = 0;
-	for (i = 0; i < ac; i++)
+	if (ac == 0 || av == NULL)
 	{
-		for (j = 0; av[i][j] != '\0'; j++)
-			leng++;
-		leng++;
-	}
-
-	str = malloc((leng + 1) * sizeof(char));
-	if (str == NULL)
 		return (NULL);
-
-	k = 0;
-	for (i = 0; i < ac; i++)
-	{
-		for (j = 0; av[i][j] != '\0'; j++)
-		{
-			str[k] = av[i][j];
-			k++;
-		}
-		str[k] = '\n';
-		k++;
 	}
-	str[k] = '\0';
-	return (str);
+	else
+	{
+		for (i = 0, k = 0 ; i < ac ; i++, k++)
+		{
+			for (j = 0 ; av[i][j] != '\0' ; j++, k++)
+			{
+				;
+			}
+		}
+		new = malloc(sizeof(char) * (k + 1));
+		salt = "\n";
+		for (i = 0 ; i < ac ; i++)
+		{
+			new = _strcat(new, av[i]);
+			if (new == NULL)
+			{
+				return (NULL);
+			}
+			if (i + 1 < ac)
+			{
+				new = _strcat(new, salt);
+				if (new == NULL)
+				{
+					return (NULL);
+				}
+			}
+		}
+	}
+	new = _strcat(new, salt);
+	if (new == NULL)
+	{
+		return (NULL);
+	}
+	return (new);
+}
+
+/**
+ * _strcat - concatenates two strings
+ * @dest: input parameter string
+ * @src: input parameter string
+ *
+ * Return: dest
+ */
+char *_strcat(char *dest, char *src)
+{
+	int a;
+	int b;
+
+	a = 0;
+
+	while (dest[a] != 0)
+	{
+		a++;
+	}
+
+	b = 0;
+
+	while (src[b] != 0)
+	{
+		dest[a] = src[b];
+		a++;
+		b++;
+	}
+	return (dest);
 }
